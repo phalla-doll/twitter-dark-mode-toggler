@@ -4,7 +4,7 @@ import { Button } from './components/ui/button';
 import { Moon, QrCode, Sun } from 'lucide-react';
 
 function App() {
-  const [tabUrl, setTabUrl] = useState('');
+  // const [tabUrl, setTabUrl] = useState('');
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light';
   });
@@ -17,17 +17,17 @@ function App() {
 
   useEffect(() => {
     // Example of using chrome.tabs API (requires "tabs" or "activeTab" permission)
-    if (chrome.tabs) { // Check if chrome.tabs is available
-      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-        if (tabs && tabs.length > 0 && tabs[0].url) {
-          setTabUrl(tabs[0].url);
-        } else {
-          setTabUrl("Could not retrieve current tab URL.");
-        }
-      });
-    } else {
-      setTabUrl("Chrome APIs not available in this context (e.g., regular web page).");
-    }
+    // if (chrome.tabs) { // Check if chrome.tabs is available
+    //   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    //     if (tabs && tabs.length > 0 && tabs[0].url) {
+    //       setTabUrl(tabs[0].url);
+    //     } else {
+    //       setTabUrl("Could not retrieve current tab URL.");
+    //     }
+    //   });
+    // } else {
+    //   setTabUrl("Chrome APIs not available in this context (e.g., regular web page).");
+    // }
   }, []);
 
   const sendMessageToBackground = () => {
