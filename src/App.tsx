@@ -27,20 +27,20 @@ function App() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  useEffect(() => {
-    // Example of using chrome.tabs API (requires "tabs" or "activeTab" permission)
-    // if (chrome.tabs) { // Check if chrome.tabs is available
-    //   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    //     if (tabs && tabs.length > 0 && tabs[0].url) {
-    //       setTabUrl(tabs[0].url);
-    //     } else {
-    //       setTabUrl("Could not retrieve current tab URL.");
-    //     }
-    //   });
-    // } else {
-    //   setTabUrl("Chrome APIs not available in this context (e.g., regular web page).");
-    // }
-  }, []);
+  // useEffect(() => {
+  //   // Example of using chrome.tabs API (requires "tabs" or "activeTab" permission)
+  //   if (chrome.tabs) { // Check if chrome.tabs is available
+  //     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  //       if (tabs && tabs.length > 0 && tabs[0].url) {
+  //         setTabUrl(tabs[0].url);
+  //       } else {
+  //         setTabUrl("Could not retrieve current tab URL.");
+  //       }
+  //     });
+  //   } else {
+  //     setTabUrl("Chrome APIs not available in this context (e.g., regular web page).");
+  //   }
+  // }, []);
 
   // const sendMessageToBackground = () => {
   //   if (chrome.runtime && chrome.runtime.sendMessage) {
@@ -110,7 +110,10 @@ function App() {
       <header className="App-header relative">
 
         <div className="flex justify-between w-full items-center">
-          <h1 className='text-base font-medium flex gap-2 items-center'><QrCode className="h-6 w-6 text-muted-foreground" />Presenter QR</h1>
+          <h1 className='text-base font-medium flex gap-2 items-center'>
+            <QrCode className="h-6 w-6 text-muted-foreground" />
+            Presenter QR
+          </h1>
           <Button
             variant="outline"
             size="sm"
@@ -121,11 +124,11 @@ function App() {
           </Button>
         </div>
 
-        <div className="p-7">
+        <div className="p-5">
           {/* <p>Current Tab URL:</p>
           <p style={{ wordBreak: 'break-all' }}>{tabUrl}</p> */}
           {showQrCode ? (
-            <div className="my-8 grid grid-cols-1 gap-3 text-center">
+            <div className="my-5 grid grid-cols-1 gap-3 text-center">
               <p className='text-left text-muted-foreground text-xs'>Scan the QR code:</p>
               <div className="flex justify-center my-4">
                 <QRCodeSVG value={qrCodeValue} size={180} bgColor={"#ffffff"} fgColor={"#000000"} level={"L"} includeMargin={false} />
@@ -136,7 +139,7 @@ function App() {
               <Button variant="default" onClick={resetAndHideInputs}>Done</Button>
             </div>
           ) : !showAskInput && !showPollInput ? (
-            <div className="my-8 grid grid-cols-1 gap-3">
+            <div className="my-5 grid grid-cols-1 gap-3">
               <p className='text-left text-muted-foreground text-xs'>Pick an option you want to create:</p>
               <Button variant="default" className='w-full flex items-center' onClick={handleAskClick}>
                 <MessageCircle className="h-4 w-4 mr-2" />Ask
@@ -146,7 +149,7 @@ function App() {
               </Button>
             </div>
           ) : showAskInput ? (
-            <div className="my-8 grid grid-cols-1 gap-3">
+            <div className="my-5 grid grid-cols-1 gap-3">
               <p className='text-left text-muted-foreground text-xs'>Enter your question:</p>
               <Textarea
                 placeholder="Type your question here."
@@ -165,7 +168,7 @@ function App() {
               <Button variant="secondary" onClick={resetAndHideInputs}>Cancel</Button>
             </div>
           ) : showPollInput ? (
-            <div className="my-8 grid grid-cols-1 gap-3">
+            <div className="my-5 grid grid-cols-1 gap-3">
               <p className='text-left text-muted-foreground text-xs'>Enter your poll question:</p>
               <Textarea
                 placeholder="Type your poll question here."
