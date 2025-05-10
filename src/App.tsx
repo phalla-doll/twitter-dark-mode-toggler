@@ -64,16 +64,16 @@ function App() {
           </Button>
         </div>
 
-        <div className="p-8">
-          <p>Current Tab URL:</p>
-          <p style={{ wordBreak: 'break-all' }}>{tabUrl}</p>
+        <div className="p-7">
+          {/* <p>Current Tab URL:</p>
+          <p style={{ wordBreak: 'break-all' }}>{tabUrl}</p> */}
           <div className="my-8 grid grid-cols-1 gap-3">
             <p className='text-left text-muted-foreground text-xs'>Pick an option you want to create:</p>
             <Button variant="default" className='w-full' onClick={sendMessageToBackground}>
-              Question
+              Ask
             </Button>
             <Button variant="secondary" className='w-full' onClick={sendMessageToBackground}>
-              Pool
+              Poll
             </Button>
           </div>
           <div>
