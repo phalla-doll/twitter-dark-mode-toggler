@@ -4,28 +4,71 @@ import { Button } from './components/ui/button';
 import { ListCheck, MessageCircle, Moon, QrCode, Sun, PlusCircle, XCircle } from 'lucide-react';
 import { Textarea } from './components/ui/textarea';
 import { Input } from './components/ui/input';
-import { QRCodeSVG } from 'qrcode.react'; // Added import
+import { QRCodeSVG } from 'qrcode.react';
 
 function App() {
   // const [tabUrl, setTabUrl] = useState('');
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'light';
   });
-  const [showAskInput, setShowAskInput] = useState(false);
-  const [askInputValue, setAskInputValue] = useState('');
+  const [showAskInput, setShowAskInput] = useState(() => {
+    return JSON.parse(localStorage.getItem('showAskInput') || 'false');
+  });
+  const [askInputValue, setAskInputValue] = useState(() => {
+    return localStorage.getItem('askInputValue') || '';
+  });
 
-  const [showPollInput, setShowPollInput] = useState(false);
-  const [pollQuestion, setPollQuestion] = useState('');
-  const [pollOptions, setPollOptions] = useState<string[]>(['', '']); // Start with two empty options
+  const [showPollInput, setShowPollInput] = useState(() => {
+    return JSON.parse(localStorage.getItem('showPollInput') || 'false');
+  });
+  const [pollQuestion, setPollQuestion] = useState(() => {
+    return localStorage.getItem('pollQuestion') || '';
+  });
+  const [pollOptions, setPollOptions] = useState<string[]>(() => {
+    const savedOptions = localStorage.getItem('pollOptions');
+    return savedOptions ? JSON.parse(savedOptions) : ['', ''];
+  });
 
-  const [showQrCode, setShowQrCode] = useState(false); // Added state for QR code visibility
-  const [qrCodeValue, setQrCodeValue] = useState(''); // Added state for QR code value
+  const [showQrCode, setShowQrCode] = useState(() => {
+    return JSON.parse(localStorage.getItem('showQrCode') || 'false');
+  });
+  const [qrCodeValue, setQrCodeValue] = useState(() => {
+    return localStorage.getItem('qrCodeValue') || '';
+  });
 
   useEffect(() => {
     const root = document.documentElement;
     root.classList.toggle('dark', theme === 'dark');
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem('showAskInput', JSON.stringify(showAskInput));
+  }, [showAskInput]);
+
+  useEffect(() => {
+    localStorage.setItem('askInputValue', askInputValue);
+  }, [askInputValue]);
+
+  useEffect(() => {
+    localStorage.setItem('showPollInput', JSON.stringify(showPollInput));
+  }, [showPollInput]);
+
+  useEffect(() => {
+    localStorage.setItem('pollQuestion', pollQuestion);
+  }, [pollQuestion]);
+
+  useEffect(() => {
+    localStorage.setItem('pollOptions', JSON.stringify(pollOptions));
+  }, [pollOptions]);
+
+  useEffect(() => {
+    localStorage.setItem('showQrCode', JSON.stringify(showQrCode));
+  }, [showQrCode]);
+
+  useEffect(() => {
+    localStorage.setItem('qrCodeValue', qrCodeValue);
+  }, [qrCodeValue]);
 
   // useEffect(() => {
   //   // Example of using chrome.tabs API (requires "tabs" or "activeTab" permission)
@@ -99,6 +142,7 @@ function App() {
     setPollOptions(['', '']);
     setShowQrCode(false); // Reset QR code visibility
     setQrCodeValue('');   // Reset QR code value
+    // Values will be persisted by their respective useEffect hooks
   };
 
   const toggleTheme = () => {
