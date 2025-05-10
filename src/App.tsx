@@ -49,23 +49,28 @@ function App() {
   };
 
   return (
-    <div className="App" style={{ width: '300px' }}>
-      <header className="App-header" style={{ position: 'relative' }}>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={toggleTheme}
-          style={{ position: 'absolute', top: 0, right: 0 }}
-        >
-          {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-        <h1>React Chrome Extension</h1>
-        <p>Current Tab URL:</p>
-        <p style={{ wordBreak: 'break-all' }}>{tabUrl}</p>
-        <Button onClick={sendMessageToBackground}>
-          Click Me
-        </Button>
+    <div className="App w-[300px]">
+      <header className="App-header relative">
+
+        <div className="flex justify-between w-full items-center">
+          <h1 className='text-base font-medium'>Presenter QR</h1>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleTheme}
+          >
+            {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+            <span className="sr-only">Toggle theme</span>
+          </Button>
+        </div>
+
+        <div className="p-8">
+          <p>Current Tab URL:</p>
+          <p style={{ wordBreak: 'break-all' }}>{tabUrl}</p>
+          <Button className='mt-8' onClick={sendMessageToBackground}>
+            Click Me
+          </Button>
+        </div>
       </header>
     </div>
   );
