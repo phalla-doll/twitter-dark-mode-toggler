@@ -5,16 +5,16 @@ console.log("Content script loaded!");
 // document.body.style.backgroundColor = 'lightblue';
 
 // Example: Add a simple div to the page
-const newDiv = document.createElement('div');
-newDiv.style.position = 'fixed';
-newDiv.style.bottom = '10px';
-newDiv.style.right = '10px';
-newDiv.style.padding = '10px';
-newDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
-newDiv.style.color = 'white';
-newDiv.style.zIndex = '9999';
-newDiv.textContent = 'React Extension Content Script Active!';
-document.body.appendChild(newDiv);
+// const newDiv = document.createElement('div');
+// newDiv.style.position = 'fixed';
+// newDiv.style.bottom = '10px';
+// newDiv.style.right = '10px';
+// newDiv.style.padding = '10px';
+// newDiv.style.backgroundColor = 'rgba(0,0,0,0.7)';
+// newDiv.style.color = 'white';
+// newDiv.style.zIndex = '9999';
+// newDiv.textContent = 'React Extension Content Script Active!';
+// document.body.appendChild(newDiv);
 
 // To communicate with other parts of your extension (e.g., background script or popup)
 // chrome.runtime.sendMessage({ greeting: "hello from content script" }, function(response) {
