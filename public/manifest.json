@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Presenter QR",
+    "name": "Twitter Dark Mode Toggler",
     "version": "0.1.0",
-    "description": "A Chrome extension for presenters generating QR codes.",
+    "description": "A Chrome extension for toggling Twitter dark mode.",
     "icons": {
         "16": "logo192.png",
         "48": "logo192.png",
